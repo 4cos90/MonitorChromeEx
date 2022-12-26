@@ -1,0 +1,28 @@
+{
+    "name": "Monitor",
+    "description": "上网情况监控插件",
+    "version": "1.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+    },
+    "web_accessible_resources": [{
+        "resources": [],
+        "matches": ["<all_urls>"]
+    }],
+    "permissions": [
+        "storage",
+        "notifications",
+        "activeTab",
+        "scripting"
+    ],
+    "action": {
+        "default_icon": "icon.png",
+        "default_title": "开始监控"
+    },
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": ["echarts/4.3.0/echarts.min.js", "content-script.js"],
+        "run_at": "document_end"
+    }]
+}
